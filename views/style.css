@@ -1,0 +1,55 @@
+
+body {
+    background-color: rgb(188, 202, 204);
+}
+div.body{
+    width: 100%;
+}
+div.newTaskButton button{
+    border-style: 5px groove red;
+    border-radius: 5px;
+    background-color: rgb(31, 209, 76);
+    height: 30px;
+    width: 100px;
+    margin-left: 25%;
+    font-weight: bold;
+}
+#newTaskForm {
+    margin-left: 25%;
+}
+.textarea {
+    background-color:  rgb(149, 180, 185);
+
+}
+.createNewTask {
+    background-color:  rgb(31, 209, 76);
+    border-radius: 5px;
+}
+h1 {
+    
+    text-align: center;
+    text-shadow: 2px 2px 5px red;
+    margin-top: 30px;
+}
+h4 {
+    margin-left: 30px;
+}
+div.tasks {
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-style: solid;
+    border-width: 5px;
+    border-radius: 5px;
+    background-color: rgb(201, 151, 77);
+    margin-top:20px;
+    margin-left:25%;
+    margin-right:25%;
+    
+}
+div.tasks button {
+    float: right;
+    border-style: 2px groove red;
+    border-radius: 4px;
+    background-color: rgb(221, 122, 83);
+    width: 100px;
+}

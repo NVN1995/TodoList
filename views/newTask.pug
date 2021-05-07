@@ -1,0 +1,16 @@
+html 
+html 
+    head 
+        title New Task
+    body 
+        div 
+            p Enter new task's content:
+        form(action = "/new", method = "POST")
+            div
+                textarea#content(name="content", cols="30", rows="10")
+                br
+                input(type = "submit", value = "Creat New Task")
+        div 
+            if(type == "error")
+            h3 #{message}
+        

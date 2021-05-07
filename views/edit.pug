@@ -1,0 +1,19 @@
+html 
+html 
+    head 
+        title Edit
+        style 
+            include editStyle.css
+    body 
+        div.body 
+            h1 Enter edit content:
+            form#updateTaskForm(action = "/edit/:id", method = "POST")
+                div
+                    textarea.textarea(name="content", cols="100", rows="5" autofocus) #{content}
+                    input(type = "hidden", name = 'id', value = `${id}`)
+                    br
+                    input.updateTask(type = "submit", value = "Update Task")
+            div.error 
+                if(type == "error")
+                h3(style='color:red') #{message}
+            
