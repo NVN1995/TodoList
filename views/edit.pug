@@ -7,7 +7,7 @@ html
     body 
         div.body 
             h1 Enter edit content:
-            form#updateTaskForm(action = "/edit/:id", method = "POST")
+            form#updateTaskForm(action = "/home/edit/:id", method = "POST")
                 div
                     textarea.textarea(name="content", cols="100", rows="5" autofocus) #{content}
                     input(type = "hidden", name = 'id', value = `${id}`)

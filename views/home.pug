@@ -6,13 +6,7 @@ html
             include style.css
     body 
         script.
-            //- window.onLoad(function() {
-            //-     var error = window.cookie("error");
-            //-     if(error){
-            //-         // hien thi error
-            //-         // xoa cookei error de ko hien thi lan sau
-            //-     }
-            //- })
+            // function onclick() hide/show newtask input form when click on 'new Task' button
             function newTask() {
                 var x = document.getElementById('newTaskForm')
                 if(x.style.display === "none")
@@ -25,21 +19,23 @@ html
                 h1 Your Todolist
             div.newTaskButton
                 button(onclick = 'newTask()', type = 'button') New Task
-            form#newTaskForm(action = "/new/:id", method = "POST", style='display:none')
+            form#newTaskForm(action = "/home/create", method = "POST", style='display:none')
                 textarea.textarea(name="content", cols="50", rows="5" autofocus)
                 br
                 input.createNewTask(type = "submit", value = "Creat")
+            if(type == "createError")
+                div(style = 'margin-left: 25%')
+                    h5(style = "color: red") #{message}
             each task in tasks
                 div.tasks
                     h4 #{task.content}
                     //p id #{task._id}
-                    form(action = "/edit", method = "POST")
+                    form(action = "/home/edit", method = "POST")
                         input(type = "hidden", name = 'id', value = `${task._id}`)
                         input(type = "hidden", name = 'content', value = `${task.content}`)
                         button(type = "submit") Edit
-                    form(action = '/delete/:id', method = "POST")
+                    form(action = '/home/delete', method = "POST")
                         input(type = "hidden", name = 'id', value = `${task._id}`)
                         button(type = "submit") Delete
                         if(type == "deleteError")
                             h5(style = "color: red") #{message}
-                    br
