@@ -1,0 +1,18 @@
+html 
+html 
+    head 
+        title Login 
+    body 
+        div 
+            h4(style={color:'red'}) #{message}
+        div(style='margin-left: 35%')
+            form(action="/login", method = "POST") 
+                lable(for="username") User Name:
+                input(type="text", name="username")
+                br
+                lable(for="password") Password:
+                input(type="password", name="password")
+                br
+                button(type="submit") Log in
+                br
+            a(href="http://localhost:8080/signup") Sign Up

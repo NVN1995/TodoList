@@ -1,0 +1,24 @@
+html 
+html 
+    head 
+        title Sign Up
+    body 
+        div 
+            h4(style='color:red') #{message}
+        div 
+            form(action="/signup", method = "POST") 
+                lable(for="email") Email:
+                input(type="email", name="email")
+                br
+                lable(for="username") User Name:
+                input(type="text", name="username")
+                br
+                lable(for="password") Password:
+                input(type="password", name="password")
+                br
+                lable(for="passwordConfirm") Confirm Password:
+                input(type="password", name="passwordConfirm")
+                br
+                input(type="submit", value="Sign up")
+            br
+            a(href="http://localhost:8080/login") Log in
