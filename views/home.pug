@@ -3,12 +3,13 @@ html
     head 
         title Todo List
         style
-            include style.css
+            include ../public/style.css
     body
+        //- Log out button
         div(style='margin-left:90%')
             a(href="http://localhost:8080/logout") Log Out 
         script.
-            // function onclick() hide/show newtask input form when click on 'new Task' button
+            //- function onclick() hide/show newtask input form when click on 'new Task' button
             function newTask() {
                 var x = document.getElementById('newTaskForm')
                 if(x.style.display === "none")
@@ -19,25 +20,31 @@ html
         div.body
             div.name 
                 h1 Your Todolist
+            //- Button create new task
             div.newTaskButton
                 button(onclick = 'newTask()', type = 'button') New Task
+            //- form to input newtask's content (show when click on button 'new task')
             form#newTaskForm(action = "/create", method = "POST", style='display:none')
                 textarea.textarea(name="content", cols="50", rows="5" autofocus)
                 br
                 input.createNewTask(type = "submit", value = "Creat")
+            //- Error message if have err
             if(type == "createError")
                 div(style = 'margin-left: 25%')
                     h5(style = "color: red") #{message}
+            //- For loop showing user's Tasks
             each task in tasks
                 div.tasks
                     h4 #{task.content}
-                    //p id #{task._id}
+                    //- edit button
                     form(action = "/edit", method = "POST")
                         input(type = "hidden", name = 'id', value = `${task._id}`)
                         input(type = "hidden", name = 'content', value = `${task.content}`)
                         button(type = "submit") Edit
+                    //- delete button
                     form(action = '/delete', method = "POST")
                         input(type = "hidden", name = 'id', value = `${task._id}`)
                         button(type = "submit") Delete
+                        //- delete error message
                         if(type == "deleteError")
                             h5(style = "color: red") #{message}

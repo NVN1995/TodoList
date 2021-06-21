@@ -2,9 +2,13 @@ html
 html 
     head 
         title Sign Up
+        style 
+            include ../public/style.css
     body 
+        //- Error message
         div 
             h4(style='color:red') #{message}
+        //- Register form
         div 
             form(action="/signup", method = "POST") 
                 lable(for="email") Email:
@@ -21,4 +25,5 @@ html
                 br
                 input(type="submit", value="Sign up")
             br
+            //- Log in button
             a(href="http://localhost:8080/login") Log in

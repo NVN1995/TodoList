@@ -1,12 +1,13 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
 
+
 const userSchema = new mongoose.Schema({
     email: {
         type: String,
-        unique: false,
-        required: true,
-        trim: true
+        unique: false,  // one email can be used for multiple account
+        required: true, 
+        trim: true      // remove extra backspace in input data
     },
     username: {
         type: String,
@@ -20,32 +21,14 @@ const userSchema = new mongoose.Schema({
     },
     passwordConfirm: {
         type: String,
-        require: true
+    },
+    role: {
+        type: String,
+        enum: ['user', 'biadmin'],
+        default: 'user'             // add 'user' role for each user created
     }
 });
 
-//Authenticate Input
-userSchema.statics.authenticate = function (email, password, callback) {
-    User.findOne({email: email})
-      .exec(function (err, user) {
-        if(err) {
-          return callback(err);
-        }
-        else if(!user) {
-          var err = new Error ('User Not Found.');
-          err.status = 401; 
-          return callback(err);
-        }
-        bcrypt.compare(password, user.password, function(err, result) {
-          if(result = true) {
-            return callback(null, user);
-          }
-          else {
-            return callback();
-          }
-        })
-      });
-}
 
 //Hashing password + save to db
 userSchema.pre('save', function (next) {
@@ -61,3 +44,4 @@ userSchema.pre('save', function (next) {
 
 var User = mongoose.model('User', userSchema);
 module.exports = User;
+

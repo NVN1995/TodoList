@@ -3,16 +3,19 @@ html
     head 
         title Edit
         style 
-            include editStyle.css
+            include ../public/editStyle.css
     body 
         div.body 
             h1 Enter edit content:
+            //- Form input edit content
             form#updateTaskForm(action = "/edit/:id", method = "POST")
                 div
                     textarea.textarea(name="content", cols="100", rows="5" autofocus) #{content}
+                    //- Hidden id will be used for 'findByIdAndUpdate' function in router '/edit'
                     input(type = "hidden", name = 'id', value = `${id}`)
                     br
                     input.updateTask(type = "submit", value = "Update Task")
+            //- Error message
             div.error 
                 if(type == "error")
                 h3(style='color:red') #{message}

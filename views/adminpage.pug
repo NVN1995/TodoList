@@ -1,0 +1,25 @@
+html
+html 
+    head 
+        title Admin Page 
+        style 
+            include ../public/style.css
+    body
+        //- Log Out button
+        div(style='margin-left:90%')
+            a(href="http://localhost:8080/logout") Log Out 
+        //- Large title in page
+        div.body
+            div.name 
+                h1 Your Users
+        //- for loop showing users
+        each user in users
+                div.userlist
+                    h4 #{user.username}
+                    form(action = '/deleteuser', method = "POST")
+                        input(type = "hidden", name = 'id', value = `${user._id}`)
+                        button(type = "submit") Delete
+        //- Error message
+        div.errmessage
+            if(type == "deleteError")
+                h5(style = "color: red") #{message}                

@@ -2,9 +2,13 @@ html
 html 
     head 
         title Login 
+        style
+            include ../public/style.css
     body 
-        div 
+        //- Error message
+        div.errmessage
             h4(style={color:'red'}) #{message}
+        //- Log in form
         div(style='margin-left: 35%')
             form(action="/login", method = "POST") 
                 lable(for="username") User Name:
@@ -15,4 +19,5 @@ html
                 br
                 button(type="submit") Log in
                 br
+            //- Sign up button
             a(href="http://localhost:8080/signup") Sign Up
